@@ -1,17 +1,17 @@
+import _ from 'lodash';
+
+/*
+* Define constants that we can use to lookup the values
+*/
+const DECIMALS = [ 1, 5, 10, 50, 100, 500, 1000 ];
+const NUMERALS = [ "I", "V", "X", "L", "C", "D", "M" ];
+
 export default class RomanNumeralGenerator {
-  /*
-  * Define constants that we can use to lookup the values
-  */
-  const I = 1;
-  const V = 5;
-  const X = 10;
-  const L = 50;
-  const C = 100;
-  const D = 500;
-  const M = 1000;
 
   constructor(number) {
     this.number = number;
+    this.numerals = NUMERALS;
+    this.decimals = DECIMALS;
     console.log('Constructed');
   }
 
@@ -28,6 +28,19 @@ export default class RomanNumeralGenerator {
   *
   */
   generate() {
-    return this.number;
+    let num = this.number;
+    let result = '';
+    // Loop over the array
+    for (let i = 0; i <= DECIMALS.length; i++) {
+      // while number is divisible (mod) by decimals
+      while (num % DECIMALS[i] < num) {
+        // add the current numeral to our result string
+        result += NUMERALS[i];
+
+        // remove the current number from our number
+        num -= DECIMALS[i];
+      }
+    }
+    return result;
   }
 }
