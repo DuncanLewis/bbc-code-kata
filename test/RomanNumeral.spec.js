@@ -1,5 +1,5 @@
 const expect = require('chai').expect; // Use chai.js expect as our assertion library
-import RomanNumeralGenerator from '../RomanNumeral'; // Import our class itself
+import RomanNumeralGenerator from '../src/RomanNumeral'; // Import our class itself
 
 describe('The RomanNumeralGenerator', () => {
   let romanNumeralGenerator;

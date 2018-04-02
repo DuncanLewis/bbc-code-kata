@@ -2,7 +2,7 @@
   "name": "bbc-code-kata",
   "version": "0.1.0",
   "description": "A simple script to convert a given number to a roman numeral",
-  "main": "RomanNumeral.js",
+  "main": "/src/RomanNumeral.js",
   "directories": {
     "test": "test"
   },
