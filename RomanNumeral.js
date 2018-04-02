@@ -4,22 +4,37 @@ import _ from 'lodash';
 * Define constants that we can use to lookup the values
 * Must be in reverse order for when we loop, start with largest first
 */
-const DECIMALS = [ 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 ];
-const NUMERALS = [ "M", "CM","D","CD","C", "XC", "L", "XL", "X","IX","V","IV","I" ];
+const ROMAN_ARRAY = [
+  [1000, 'M'],
+  [900, 'CM'],
+  [500, 'D'],
+  [400, 'CD'],
+  [100, 'C'],
+  [90, 'XC'],
+  [50, 'L'],
+  [40, 'XL'],
+  [10, 'X'],
+  [9, 'IX'],
+  [5, 'V'],
+  [4, 'IV'],
+  [1, 'I']
+]
 
 export default class RomanNumeralGenerator {
-
   constructor(number) {
-    this.number = number;
-    //Zip our two arrays (DECIMALS and NUMERALS) together so we can map against them
-    this.romanArray = _.zip(DECIMALS, NUMERALS);
+    this.number = +number; // Use the unary operator (+) to convert to int
+    this.romanArray = ROMAN_ARRAY;
   }
 
   /*
   * RomanNumeralGenerator
   *
-  * generates a roman numeral when passed an integer
-  * for example:
+  * Generates a roman numeral when passed an integer
+  *
+  * Starts at the largest number and subtracts from the roman numeral array.
+  * Continues while the number is greater than the value that is being looked up
+  *
+  * Example inputs and results:
   * 1 = I
   * 5 = V
   * 10 = X
@@ -31,15 +46,15 @@ export default class RomanNumeralGenerator {
     let num = this.number;
     let result = '';
 
-    /*for (let i = 0; i <= DECIMALS.length; i++) { */
-    this.romanArray.map((decimal , numeral) => { // Use .map rather than a for loop 
+    // Use .map rather than a for loop - equivalent to: for (let i = 0; i <= romanArray.length; i++) {
+    this.romanArray.map((decimal , numeral) => {
       let curDecimal = decimal[0];
       let curNumeral = decimal[1];
-      // while number is divisible (mod) by decimals
+      // while number is divisible (mod) by current decimal without a remainder greater than itself
       while (num % curDecimal < num) {
-        // add the current numeral to our result string
+        // add the current roman numeral to our result string
         result += curNumeral;
-        // remove the current number from our number
+        // remove the current decimal from our number
         num -= curDecimal;
       }
     });

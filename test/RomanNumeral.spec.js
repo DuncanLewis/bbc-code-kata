@@ -38,29 +38,38 @@ describe('The RomanNumeralGenerator', () => {
   * Test a larger number, e.g. 3999
   * should equal MMMCMXCIX
   */
-  /*it('should return a roman numeral when passed an integer', () => {
+  it('should return a roman numeral when passed an integer', () => {
       romanNumeralGenerator = new RomanNumeralGenerator(3999);
       let result = romanNumeralGenerator.generateRoman();
       expect(result).to.be.equal("MMMCMXCIX");
-  });*/
+  });
 
   /*
   * Test a an invalid input
   * should return an error
   */
-  /*it('should return error when passed an invalid input, e.g. string', () => {
+  it('should return error when passed an invalid input, e.g. string', () => {
       romanNumeralGenerator = new RomanNumeralGenerator("qwerty");
       let result = romanNumeralGenerator.generateRoman();
       expect(result).to.be.equal("X");
-  });*/
+  });
+
+  /*
+  * Test a number passed as a string, should be converted to an int
+  */
+  it('should return a roman numeral when passed a string number', () => {
+      romanNumeralGenerator = new RomanNumeralGenerator("10");
+      let result = romanNumeralGenerator.generateRoman();
+      expect(result).to.be.equal("X");
+  });
 
   /*
   * Test a larger number, e.g. 3999
   * should equal MMMCMXCIX
   */
-  /*it('should return a roman numeral when passed an ', () => {
+  it('should return a roman numeral when passed an ', () => {
       romanNumeralGenerator = new RomanNumeralGenerator(3999);
       let result = romanNumeralGenerator.generateRoman();
       expect(result).to.be.equal("MMMCMXCIX");
-  });*/
+  });
 });
