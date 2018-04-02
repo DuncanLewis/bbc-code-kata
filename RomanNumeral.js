@@ -11,8 +11,8 @@ export default class RomanNumeralGenerator {
 
   constructor(number) {
     this.number = number;
-    this.numerals = NUMERALS;
-    this.decimals = DECIMALS;
+    //Zip our two arrays (DECIMALS and NUMERALS) together so we can map against them
+    this.romanArray = _.zip(DECIMALS, NUMERALS);
   }
 
   /*
@@ -26,24 +26,23 @@ export default class RomanNumeralGenerator {
   * 20 = XX
   * 3999 = MMMCMXCIX
   *
-  * ToDo: Convert from loops to a more elegant array map solution, its 2018 so lets avoid loops
-  * wherever possible!
-  *
   */
-  generate() {
+  generateRoman() {
     let num = this.number;
     let result = '';
-    // Loop over the array
-    for (let i = 0; i <= DECIMALS.length; i++) {
+
+    /*for (let i = 0; i <= DECIMALS.length; i++) { */
+    this.romanArray.map((decimal , numeral) => { // Use .map rather than a for loop 
+      let curDecimal = decimal[0];
+      let curNumeral = decimal[1];
       // while number is divisible (mod) by decimals
-      while (num % DECIMALS[i] < num) {
+      while (num % curDecimal < num) {
         // add the current numeral to our result string
-        result += NUMERALS[i];
+        result += curNumeral;
         // remove the current number from our number
-        num -= DECIMALS[i];
+        num -= curDecimal;
       }
-    }
-    console.log(result);
+    });
     return result;
   }
 }

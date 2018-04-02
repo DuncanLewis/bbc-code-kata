@@ -2,7 +2,7 @@
   "name": "bbc-code-kata",
   "version": "0.1.0",
   "description": "A simple script to convert a given number to a roman numeral",
-  "main": "index.js",
+  "main": "RomanNumeral.js",
   "directories": {
     "test": "test"
   },
@@ -21,6 +21,5 @@
   "scripts": {
     "test": "mocha --require babel-polyfill --require babel-register"
   },
-  "author": "Duncan Lewis",
-  "license": "ISC"
+  "author": "Duncan Lewis"
 }
