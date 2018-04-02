@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 /*
 * Define constants that we can use to lookup the values
 * Must be in reverse order for when we loop, start with largest first
@@ -45,6 +43,10 @@ export default class RomanNumeralGenerator {
   generateRoman() {
     let num = this.number;
     let result = '';
+
+    if (isNaN(num)) {
+      return "Error: Please enter a valid number";
+    }
 
     // Use .map rather than a for loop - equivalent to: for (let i = 0; i <= romanArray.length; i++) {
     this.romanArray.map((decimal , numeral) => {

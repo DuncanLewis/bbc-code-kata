@@ -51,7 +51,7 @@ describe('The RomanNumeralGenerator', () => {
   it('should return error when passed an invalid input, e.g. string', () => {
       romanNumeralGenerator = new RomanNumeralGenerator("qwerty");
       let result = romanNumeralGenerator.generateRoman();
-      expect(result).to.be.equal("X");
+      expect(result).to.be.equal("Error: Please enter a valid number");
   });
 
   /*
