@@ -44,6 +44,8 @@ export default class RomanNumeralGenerator {
     let num = this.number;
     let result = '';
 
+    // Check if isNaN returns true, therefore number is not a number and
+    // return error
     if (isNaN(num)) {
       return "Error: Please enter a valid number";
     }
