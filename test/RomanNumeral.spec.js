@@ -1,9 +1,13 @@
-const expect = require('chai').expect;
+const expect = require('chai').expect; // Use chai.js expect as our assertion library
 import RomanNumeralGenerator from '../RomanNumeral'; // Import our class itself
 
 describe('The RomanNumeralGenerator', () => {
   let romanNumeralGenerator;
 
+  /*
+  * Mount an instance of the RomanNumeralGenerator before each test run
+  * we may override this if we want to use different values
+  */
   beforeEach(() => {
     romanNumeralGenerator = new RomanNumeralGenerator(8);
   });

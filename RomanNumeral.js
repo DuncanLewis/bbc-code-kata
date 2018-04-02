@@ -18,6 +18,12 @@ const ROMAN_ARRAY = [
   [1, 'I']
 ]
 
+/*
+* RomanNumeralGenerator class
+*
+* Purpose is to generate a roman numeral from a provided number
+* Can be extended to convert a roman numeral string to an integer
+*/
 export default class RomanNumeralGenerator {
   constructor(number) {
     this.number = +number; // Use the unary operator (+) to convert to int
@@ -25,7 +31,7 @@ export default class RomanNumeralGenerator {
   }
 
   /*
-  * RomanNumeralGenerator
+  * generateRoman
   *
   * Generates a roman numeral when passed an integer
   *
@@ -51,9 +57,9 @@ export default class RomanNumeralGenerator {
     }
 
     // Use .map rather than a for loop - equivalent to: for (let i = 0; i <= romanArray.length; i++) {
-    this.romanArray.map((decimal , numeral) => {
-      let curDecimal = decimal[0];
-      let curNumeral = decimal[1];
+    this.romanArray.map(item => {
+      let curDecimal = item[0]; //item[0] is the decimal, e.g. 10
+      let curNumeral = item[1]; //item[1] is the numeral, e.g. X
       // while number is divisible (mod) by current decimal without a remainder greater than itself
       while (num % curDecimal < num) {
         // add the current roman numeral to our result string
@@ -62,6 +68,7 @@ export default class RomanNumeralGenerator {
         num -= curDecimal;
       }
     });
+    // Return the final result string
     return result;
   }
 }
